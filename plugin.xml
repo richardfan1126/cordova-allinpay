@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.cordova.allinpay"
+        version="0.0.1">
+
+  <name>Cordova All In Pay</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/allinpay.js" target="js/allinpay.js"/>
+
+  <js-module src="www/allinpay.js" name="allinpay">
+    <clobbers target="allinpay" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="AllInPay">
+        <param name="android-package" value="com.cordova.plugin.AllInPay"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/AllInPay.java" target-dir="src/com/cordova/plugin/"/>
+    <source-file src="src/android/PaaCreator.java" target-dir="src/com/cordova/plugin/"/>
+    <source-file src="src/android/APPayAssistEx.jar" target-dir="libs/"/>
+    <source-file src="src/android/APPayAssistEx.apk" target-dir="assets/"/>
+  </platform>
+</plugin>
