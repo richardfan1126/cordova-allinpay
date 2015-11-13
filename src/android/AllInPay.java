@@ -12,6 +12,8 @@ import android.app.Activity;
 
 import java.lang.Override;
 import java.util.Date;
+import 	java.text.DateFormat;
+import 	java.text.SimpleDateFormat;
 
 public class AllInPay extends CordovaPlugin {
     private CallbackContext callbackContext;
@@ -36,7 +38,7 @@ public class AllInPay extends CordovaPlugin {
             String stage = data.getString(9);
             String key = data.getString(10);
             
-            if(orderDatetime == ''){
+            if(orderDatetime == ""){
             	DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 				Date date = new Date();
 				orderDatetime = dateFormat.format(date);
