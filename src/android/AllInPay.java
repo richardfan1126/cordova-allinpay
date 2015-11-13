@@ -35,6 +35,12 @@ public class AllInPay extends CordovaPlugin {
             String payType = data.getString(8);
             String stage = data.getString(9);
             String key = data.getString(10);
+            
+            if(orderDatetime == ''){
+            	DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+				Date date = new Date();
+				orderDatetime = dateFormat.format(date);
+            }
 
             String paydata = PaaCreator.genPayData(amount, receiveUrl, signType, merchantId, orderNo, productName, orderCurrency, orderDatetime, payType, key).toString();
 
