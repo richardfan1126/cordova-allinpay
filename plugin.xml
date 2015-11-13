@@ -28,4 +28,33 @@
     <source-file src="src/android/APPayAssistEx.jar" target-dir="libs/"/>
     <source-file src="src/android/APPayAssistEx.apk" target-dir="assets/"/>
   </platform>
+  
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="AllInPay">
+        <param name="ios-package" value="AllInPay" />
+      </feature>
+    </config-file>
+	<framework src="CoreTelephony.framework" />
+	<framework src="CoreLocation.framework" />
+	<framework src="Security.framework" />
+	<framework src="SystemConfiguration.framework" />
+	<framework src="CoreText.framework" />
+	<framework src="AudioToolbox.framework" />
+	<framework src="CoreGraphics.framework" />
+	<framework src="libstdc++.6.0.9.dylib" />
+	<framework src="QuartzCore.framework" />	
+
+	<framework src="src/ios/TrustDefenderMobile.framework" custom="true" />
+    <header-file src="src/ios/APay.h" />
+    <resource-file src="src/ios/APayRes.bundle" />
+    <source-file src="src/ios/libAPayLib.a" framework="true" />
+	<resource-file src="src/ios/APMPPassGuardCtrlBundle.bundle" />
+	
+	<header-file src="src/ios/PaaCreater.h" />
+	<source-file src="src/ios/PaaCreater.m" />
+	
+	<header-file src="src/ios/AllInPay.h" />
+	<source-file src="src/ios/AllInPay.m" />
+  </platform>
 </plugin>
