@@ -13,8 +13,8 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class PaaCreator {
-	public static JSONObject randomPaa() {
-		String amount = "1";
+	public static JSONObject genPayData(Double amount, String receiveUrl, String signType, String merchantId, String orderNo, String productName, String orderCurrency, String orderDatetime, String payType, String key) {
+		String amountString = Double.toString(amount * 10);
 	    
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
@@ -24,44 +24,44 @@ public class PaaCreator {
 	    JSONObject paaParams = new JSONObject();
 	    try {
 			paaParams.put("inputCharset", "1");
-			paaParams.put("receiveUrl", "http://onehomeserve.com");
+			paaParams.put("receiveUrl", receiveUrl);
 			paaParams.put("version", "v1.0");
-			paaParams.put("signType", "0");
-			paaParams.put("merchantId", "100020091218001");
-			paaParams.put("orderNo", orderStr);
-			paaParams.put("orderAmount", amount);
-			paaParams.put("orderCurrency", "0");
-			paaParams.put("orderDatetime", timeStr);
-			paaParams.put("productName", "Product1");
+			paaParams.put("signType", signType);
+			paaParams.put("merchantId", merchantId);
+			paaParams.put("orderNo", orderNo);
+			paaParams.put("orderAmount", amountString);
+			paaParams.put("orderCurrency", orderCurrency);
+			paaParams.put("orderDatetime", orderDatetime);
+			paaParams.put("productName", productName);
 //			paaParams.put("ext1", ext1FromInput());
 //			paaParams.put("ext1", "<USER>201406231006545</USER>");
-			paaParams.put("payType", "27");
+			paaParams.put("payType", payType);
 //			paaParams.put("issuerId", "visa");
 //			paaParams.put("tradeNature", "GOODS");
 //			paaParams.put("language", "3");
-			paaParams.put("cardNo", "");
+//			paaParams.put("cardNo", "");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	    
 		    String[] paaParamsArray = {
 				"1","inputCharset",
-				"http://onehomeserve.com","receiveUrl",
+				receiveUrl,"receiveUrl",
 				"v1.0","version",
 //				"3","language",
-				"0","signType",
-				"100020091218001","merchantId",
-				orderStr,"orderNo",
-				amount,"orderAmount",
-				"0","orderCurrency",
-				timeStr,"orderDatetime",
-				"Product1", "productName",
+				signType,"signType",
+				merchantId,"merchantId",
+				orderNo,"orderNo",
+				amountString,"orderAmount",
+				orderCurrency,"orderCurrency",
+				orderDatetime,"orderDatetime",
+				productName, "productName",
 //				ext1FromInput(),"ext1",
 //			    "<USER>201406231006545</USER>","ext1",
-				"27","payType",
+				payType,"payType",
 //				"visa","issuerId",
 //				"GOODS","tradeNature",
-				"1234567890","key",
+				"1234567890",key,
 		    };
 		    
 		    String paaStr = "";

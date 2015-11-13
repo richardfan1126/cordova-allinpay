@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.app.Activity;
 
 import java.lang.Override;
+import java.util.Date;
 
 public class AllInPay extends CordovaPlugin {
     private CallbackContext callbackContext;
@@ -24,11 +25,21 @@ public class AllInPay extends CordovaPlugin {
         if (action.equals("pay")) {
 
             Double amount = data.getDouble(0);
+            String receiveUrl = data.getString(1);
+            String signType = data.getString(2);
+            String merchantId = data.getString(3);
+            String orderNo = data.getString(4);
+            String productName = data.getString(5);
+            String orderCurrency = data.getString(6);
+            String orderDatetime = data.getString(7);
+            String payType = data.getString(8);
+            String stage = data.getString(9);
+            String key = data.getString(10);
 
-            String paydata = PaaCreator.randomPaa().toString();
+            String paydata = PaaCreator.genPayData(amount, receiveUrl, signType, merchantId, orderNo, productName, orderCurrency, orderDatetime, payType, key).toString();
 
             Activity activity = cordova.getActivity();
-            APPayAssistEx.startPay(activity, paydata, "01");
+            APPayAssistEx.startPay(activity, paydata, stage);
 
             PluginResult pluginResult = new  PluginResult(PluginResult.Status.NO_RESULT);
             pluginResult.setKeepCallback(true);
