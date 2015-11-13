@@ -6,6 +6,12 @@ Payment gateway of All In Pay for cordova projects
 Install the plugin
     
     $ cordova plugin add https://github.com/richardfan1126/cordova-allinpay.git
+
+
+### iOS Only
+
+1. Open your iOS project with XCode
+2. In 'Build Settings', change 'Enable Bitcode' to 'No'
     
 
 ## More Info
