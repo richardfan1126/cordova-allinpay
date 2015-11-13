@@ -17,19 +17,19 @@ module.exports = {
     	};
     	
     	var dataArray = [
-    		amount,
-    		receiveUrl,
-    		signType,
-    		merchantId,
-    		orderNo,
-    		productName,
-    		orderCurrency,
-    		orderDatetime,
-    		payType,
-    		stage,
-    		key
+    		defaultData.amount,
+    		defaultData.receiveUrl,
+    		defaultData.signType,
+    		defaultData.merchantId,
+    		defaultData.orderNo,
+    		defaultData.productName,
+    		defaultData.orderCurrency,
+    		defaultData.orderDatetime,
+    		defaultData.payType,
+    		defaultData.stage,
+    		defaultData.key
     	];
     	
-        cordova.exec(successCallback, errorCallback, "AllInPay", "pay", [dataArray]);
+        cordova.exec(successCallback, errorCallback, "AllInPay", "pay", dataArray);
     }
 };

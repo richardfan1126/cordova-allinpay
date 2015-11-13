@@ -14,7 +14,7 @@ import android.util.Log;
 
 public class PaaCreator {
 	public static JSONObject genPayData(Double amount, String receiveUrl, String signType, String merchantId, String orderNo, String productName, String orderCurrency, String orderDatetime, String payType, String key) {
-		String amountString = Double.toString(amount * 10);
+		String amountString = String.format("%.0f", (amount * 100));
 	    
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
@@ -61,7 +61,7 @@ public class PaaCreator {
 				payType,"payType",
 //				"visa","issuerId",
 //				"GOODS","tradeNature",
-				"1234567890",key,
+				key,"key",
 		    };
 		    
 		    String paaStr = "";
