@@ -30,6 +30,6 @@ module.exports = {
     		key
     	];
     	
-        cordova.exec(successCallback, errorCallback, "AllInPay", "pay", [amount]);
+        cordova.exec(successCallback, errorCallback, "AllInPay", "pay", [dataArray]);
     }
 };
