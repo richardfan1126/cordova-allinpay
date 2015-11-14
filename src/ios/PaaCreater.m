@@ -12,19 +12,9 @@
 
 static int count = 0;
 
-+ (NSString *)randomPaa {
++ (NSString *)genPayDate:(double)amount receiveUrl:(NSString *)receiveUrl signType:(NSString *)signType merchantId:(NSString *)merchantId orderNo:(NSString *)orderNo productName:(NSString *)productName orderCurrency:(NSString *)orderCurrency orderDatetime:(NSString *)orderDatetime payType:(NSString *)payType key:(NSString *)key {
     
-    //商户订单金额、以分为单位
-    NSInteger amount = arc4random() % 50000 + 1; //以分为计算单位
-    
-    //商户订单生成日期
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-    NSDate *workDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[NSDate timeIntervalSinceReferenceDate]];
-    NSString *timeStr = [dateFormatter stringFromDate:workDate];
-    
-    //商户订单号
-    NSString *orderStr = [NSString stringWithFormat:@"%@%@", timeStr, [NSString stringWithFormat:@"%04d", count]];
+    NSString* amountString = [NSString stringWithFormat:@"%.0f", (amount*100)];
     
 //####################################  计算外卡扩展信息字段签名  ######################################//
 
@@ -38,7 +28,7 @@ static int count = 0;
                          @"1", @"inputCharset",
                          
                          //支付通知结果以此为准,后台通知商户网站支付结 果的 url 地址
-                         @"http://www", @"receiveUrl",
+                         receiveUrl, @"receiveUrl",
                          
                          ////协议版本,固定填 v1.0
                          @"v1.0", @"version",
@@ -51,27 +41,27 @@ static int count = 0;
 //                         @"3", @"language",
                          
                          //订单信息签名方式
-                         @"1", @"signType",
+                         signType, @"signType",
                          
                          //通联分配给商户的ID
-                         @"100020091218001", @"merchantId",//测试商户号
+                         merchantId, @"merchantId",//测试商户号
                          
 //                         @"20140901", @"merchantId",
                          
 //                         @"100020150803001", @"merchantId",
                          
                          //商户当前支付订单号
-                         orderStr, @"orderNo",
+                         orderNo, @"orderNo",
                          
                          //订单支付金额
                          //分做单位
                          //最小0.01元
-                         @"3500", @"orderAmount",
+                         amountString, @"orderAmount",
                          
                          //针对非跨境和非外卡支付
                          //payType=27
                          //支持以下币种: 默认[人民币]-0 人民币-156
-                         @"0", @"orderCurrency",
+                         orderCurrency, @"orderCurrency",
                          
                          //针对跨境支付
                          //payType=27
@@ -93,10 +83,10 @@ static int count = 0;
                          
                          //商户生成订单时间戳
                          //必须允许的订单时间范围内
-                         timeStr, @"orderDatetime",
+                         orderDatetime, @"orderDatetime",
                          
                          //商品名称
-                         @"二维码", @"productName",
+                         productName, @"productName",
                          
                          //对于非外卡支付
                          //商户用户号在通联会员系统对应的会员号
@@ -115,7 +105,7 @@ static int count = 0;
                          //此处必须与商户实际开通的支付方式一致
                          
                          //27-移动(跨境)支付 v2.x版本的支付控件
-                         @"27", @"payType",
+                         payType, @"payType",
                          
                          //########################  填充外卡支付方式字段  ###########################//
                          
@@ -136,7 +126,7 @@ static int count = 0;
                          
                          //商户订单签名key
                          //在通联商户平台维护
-                         @"1234567890", @"key",
+                         key, @"key",
                          ];
     
     NSString *paaStr = [self formatPaa:paaDic];

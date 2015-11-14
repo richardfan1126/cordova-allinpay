@@ -11,7 +11,7 @@ module.exports = {
     		productName: ((typeof data.productName == 'undefined') ? 'Sample Product' : data.productName),
     		orderCurrency: ((typeof data.orderCurrency == 'undefined') ? '0' : data.orderCurrency),
     		orderDatetime: ((typeof data.orderDatetime == 'undefined') ? '' : data.orderDatetime),
-    		payType: ((typeof data.payType == 'undefined') ? '0' : data.payType),
+    		payType: ((typeof data.payType == 'undefined') ? '27' : data.payType),
     		stage: ((typeof data.stage == 'undefined') ? '00' : data.stage),
     		key: ((typeof data.key == 'undefined') ? '00000' : data.key)
     	};

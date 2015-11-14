@@ -16,11 +16,6 @@ public class PaaCreator {
 	public static JSONObject genPayData(Double amount, String receiveUrl, String signType, String merchantId, String orderNo, String productName, String orderCurrency, String orderDatetime, String payType, String key) {
 		String amountString = String.format("%.0f", (amount * 100));
 	    
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-        String timeStr = dateFormat.format(new Date());
-	    String orderStr = timeStr + "0000";
-	    
 	    JSONObject paaParams = new JSONObject();
 	    try {
 			paaParams.put("inputCharset", "1");
