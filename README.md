@@ -10,8 +10,14 @@ Install the plugin
 
 ### iOS Only
 
-1. Open your iOS project with XCode
+1. Open your iOS project with Xcode
 2. In 'Build Settings', change 'Enable Bitcode' to 'No'
+
+#### Known issues
+In Xcode, check if 'AllInPay.m' is include in 'Build Phases' -> 'Compile Sources'.
+If not, click the plus button to add it back.
+
+More info: [http://stackoverflow.com/a/21148428](http://stackoverflow.com/a/21148428)
     
 
 ## More Info
